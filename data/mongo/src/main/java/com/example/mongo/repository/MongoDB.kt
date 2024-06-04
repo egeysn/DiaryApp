@@ -36,7 +36,7 @@ object MongoDB : MongoRepository {
                         name = "User's Diaries"
                     )
                 }
-                .log(LogLevel.ALL)
+//                .log(LogLevel.ALL)
                 .build()
             realm = Realm.open(config)
         }

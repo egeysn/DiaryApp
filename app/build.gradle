@@ -1,11 +1,12 @@
 plugins {
-    id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.jetbrains.kotlin)
+    alias(libs.plugins.jetbrains.kotlin.compose)
+    alias(libs.plugins.google.ksp)
+    alias(libs.plugins.dagger.hilt)
+    alias(libs.plugins.google.services)
+    id("io.realm.kotlin")
 //    id 'kotlin-kapt'
-    id 'com.google.devtools.ksp'
-    id 'dagger.hilt.android.plugin'
-    id 'io.realm.kotlin'
-    id 'com.google.gms.google-services'
 }
 
 android {
@@ -42,9 +43,10 @@ android {
     buildFeatures {
         compose true
     }
-    composeOptions {
-        kotlinCompilerExtensionVersion ProjectConfig.extensionVersion
-    }
+    // No longer needed from Kotlin 2.0
+//    composeOptions {
+//        kotlinCompilerExtensionVersion ProjectConfig.extensionVersion
+//    }
     packagingOptions {
         resources {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
@@ -54,28 +56,28 @@ android {
 
 dependencies {
     // Compose Navigation
-    implementation libs.navigation.compose
+    implementation(libs.androidx.navigation.compose)
 
     // Firebase
-    implementation libs.firebase.storage
+    implementation(libs.firebase.storage.ktx)
 
     // Room components
-    implementation libs.room.runtime
-    ksp libs.room.compiler
-    implementation libs.room.ktx
+    implementation(libs.androidx.room.runtime)
+    ksp(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.ktx)
 
     // Splash API
-    implementation libs.splash.api
+    implementation(libs.androidx.core.splashscreen)
 
     // Mongo DB Realm
-    implementation libs.realm.sync
+    implementation(libs.library.sync)
 
     // Dagger Hilt
-    implementation libs.hilt.android
-    ksp libs.hilt.compiler
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.compiler)
 
     // Desugar JDK
-    coreLibraryDesugaring libs.desugar.jdk
+    coreLibraryDesugaring(libs.desugar.jdk.libs)
 
     implementation(project(":core:ui"))
     implementation(project(":core:util"))

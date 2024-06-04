@@ -1,9 +1,9 @@
 plugins {
-    id 'com.android.library'
-    id 'org.jetbrains.kotlin.android'
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.jetbrains.kotlin)
+    alias(libs.plugins.google.ksp)
+    id("io.realm.kotlin")
 //    id 'kotlin-kapt'
-    id 'com.google.devtools.ksp'
-    id 'io.realm.kotlin'
 }
 
 android {
@@ -37,13 +37,13 @@ android {
 }
 
 dependencies {
-    implementation libs.core.ktx
-    implementation libs.coroutines.core
-    implementation libs.realm.sync
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.library.sync)
 
-    implementation libs.room.runtime
-    implementation libs.room.ktx
-    ksp libs.room.compiler
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    ksp(libs.androidx.room.compiler)
 
     implementation(project(":core:util"))
 }

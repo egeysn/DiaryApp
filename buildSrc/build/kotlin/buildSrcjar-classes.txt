@@ -1,1 +1,1 @@
-C:\Users\Stefan\AndroidStudioProjects\DiaryApp\buildSrc\build\classes\kotlin\main\ProjectConfig.class
+/Users/stevdza-san/AndroidStudioProjects/DiaryApp/buildSrc/build/classes/kotlin/main/ProjectConfig.class

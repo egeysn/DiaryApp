@@ -57,7 +57,7 @@ internal fun AuthenticationScreen(
                     if(task.isSuccessful) {
                         onSuccessfulFirebaseSignIn(tokenId)
                     } else {
-                        task.exception?.let { it -> onFailedFirebaseSignIn(it) }
+                        task.exception?.let { onFailedFirebaseSignIn(it) }
                     }
                 }
         },
